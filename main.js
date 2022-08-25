@@ -165,3 +165,9 @@ const commentDisplay = document.querySelector('.comment-display');
 function postComment() {
   commentDisplay.innerHTML = `<comment-comp></comment-comp>`
 }
+const button = document.getElementById('submit');
+button.addEventListener('click', function (evt) {
+  evt.preventDefault(); //keeps page from loading error message after submit
+  postComment(); //function call for alerts
+  window.location.reload(true); //reloads window after submit
+});
