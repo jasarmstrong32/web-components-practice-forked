@@ -67,7 +67,7 @@
     <div class="comment-display"></div>
 
     <div class="comment-area">
-      <form action="">
+      <form>
         <fieldset>
           <legend>Leave a Comment!</legend>
 
@@ -87,10 +87,10 @@
           ></textarea>
 
           <label for="permission">
-          <input type="checkbox" id="permission" required />
+          <input type="checkbox" id="permission" value="true" required />
             Check this box to allow your comment to be posted
           </label>
-          <button class="submit" id="submit">Post Your Comment</button>
+          <button class="submit" id="submit" type='submit' onclick="postComment()">Post Your Comment</button>
         </fieldset>
       </form>
     </div>

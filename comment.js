@@ -1,3 +1,7 @@
+const commentName = document.getElementById('#name').value;
+const commentEmail = document.getElementById('#email').value;
+const commentBody = document.getElementById('#comment-body').value;
+
 const commentTemplate = document.createElement('template');
 commentTemplate.innerHTML = `
   <style>
@@ -30,10 +34,7 @@ commentTemplate.innerHTML = `
         <p class='comment-name'></p>
         <p class='comment-email'></P>
         <p class='comment-dateTime'></p>
-      </div>
-      <button id='toggle-info'>Show Contact Info</button>
     </div>
-  </div>
 `;
 
 class CommentComp extends HTMLElement {
@@ -42,30 +43,19 @@ class CommentComp extends HTMLElement {
 
     this.attachShadow({ mode: 'open' });
     this.shadowRoot.appendChild(template.content.cloneNode(true));
+
     this.shadowRoot.querySelector('p[class="comment-body"]').innerText =
-      this.getAttribute('comment-body');
-    this.shadowRoot.querySelector('p[class="phone"]').innerText =
-      this.getAttribute('phone');
-    this.shadowRoot.querySelector('p[class="email"]').innerText =
-      this.getAttribute('email');
+      commentBody;
+
+    this.shadowRoot.querySelector('p[class="name"]').innerText = commentName;
+
+    this.shadowRoot.querySelector('p[class="email"]').innerText = commentEmail;
   }
+}
 
-  /*toggleInfo() {
-    this.showInfo = !this.showInfo;
 
-    const info = this.shadowRoot.querySelector('.info');
-    const toggleBtn = this.shadowRoot.querySelector('#toggle-info');
 
-    if (this.showInfo) {
-      info.style.display = 'block';
-      toggleBtn.innerHTML = 'Hide Contact Info';
-    } else {
-      info.style.display = 'none';
-      toggleBtn.innerHTML = 'Show Contact Info';
-    }
-  }
-
-  connectedCallback() {
+  /*connectedCallback() {
     this.shadowRoot
       .querySelector('#toggle-info')
       .addEventListener('click', () => this.toggleInfo());
@@ -73,6 +63,6 @@ class CommentComp extends HTMLElement {
   disconnectedCallback() {
     this.shadowRoot.querySelector('#toggle-info').removeEventListener();
   }
-}*/
+*/
 
 window.customElements.define('comment-comp', CommentComp);
