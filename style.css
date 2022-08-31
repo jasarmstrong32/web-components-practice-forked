@@ -84,3 +84,7 @@ button:hover{
   cursor: pointer;
   border: white solid 5px;
 }
+.comment-display{
+  background: #540707;
+  color: white;
+}
